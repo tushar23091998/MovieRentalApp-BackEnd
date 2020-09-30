@@ -51,7 +51,6 @@ C:\MovieRentalApp\MovieRentalApp\MovieRentalApp\bin\Debug\netcoreapp3.0\Microsof
 C:\MovieRentalApp\MovieRentalApp\MovieRentalApp\bin\Debug\netcoreapp3.0\linq2db.dll
 C:\MovieRentalApp\MovieRentalApp\MovieRentalApp\bin\Debug\netcoreapp3.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\MovieRentalApp\MovieRentalApp\MovieRentalApp\bin\Debug\netcoreapp3.0\System.ComponentModel.Annotations.dll
-C:\MovieRentalApp\MovieRentalApp\MovieRentalApp\bin\Debug\netcoreapp3.0\AutoMapper.dll
 C:\MovieRentalApp\MovieRentalApp\MovieRentalApp\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Logging.dll
 C:\MovieRentalApp\MovieRentalApp\MovieRentalApp\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Tokens.dll
 C:\MovieRentalApp\MovieRentalApp\MovieRentalApp\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.JsonWebTokens.dll
@@ -62,5 +61,10 @@ C:\MovieRentalApp\MovieRentalApp\MovieRentalApp\bin\Debug\netcoreapp3.0\Microsof
 C:\MovieRentalApp\MovieRentalApp\MovieRentalApp\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Protocols.dll
 C:\MovieRentalApp\MovieRentalApp\MovieRentalApp\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\MovieRentalApp\MovieRentalApp\MovieRentalApp\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
+C:\MovieRentalApp\MovieRentalApp\MovieRentalApp\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\MovieRentalApp\MovieRentalApp\MovieRentalApp\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\MovieRentalApp\MovieRentalApp\MovieRentalApp\bin\Debug\netcoreapp3.0\Newtonsoft.Json.Bson.dll
+C:\MovieRentalApp\MovieRentalApp\MovieRentalApp\bin\Debug\netcoreapp3.0\AutoMapper.dll
+C:\MovieRentalApp\MovieRentalApp\MovieRentalApp\bin\Debug\netcoreapp3.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\MovieRentalApp\MovieRentalApp\MovieRentalApp\obj\Debug\netcoreapp3.0\MovieRentalApp.csproj.CoreCompileInputs.cache
 C:\MovieRentalApp\MovieRentalApp\MovieRentalApp\obj\Debug\netcoreapp3.0\MovieRentalApp.MvcApplicationPartsAssemblyInfo.cache

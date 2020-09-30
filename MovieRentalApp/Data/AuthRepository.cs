@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography.X509Certificates;
+using MovieRentalApp.Interfaces;
 
 namespace MovieRentalApp.Data
 {

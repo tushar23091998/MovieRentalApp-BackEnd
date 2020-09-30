@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using MovieRentalApp.Data;
 using MovieRentalApp.Dtos;
+using MovieRentalApp.Interfaces;
 using MovieRentalApp.Models;
 using System;
 using System.Collections.Generic;
