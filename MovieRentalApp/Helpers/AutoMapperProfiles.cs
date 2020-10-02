@@ -28,6 +28,7 @@ namespace MovieRentalApp.Helpers
                       opt.MapFrom(src => src.ADob.CalculateAge()));
             CreateMap<TblOrder, OrderForMappingDto>();
             CreateMap<TblMovie, OrderToMovieDto>();
+            CreateMap<UserForUpdateDto, TblUser>();
         }
 
     }
