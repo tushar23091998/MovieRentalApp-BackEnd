@@ -10,7 +10,7 @@ namespace MovieRentalApp.Dtos
     {
         [Required]
         [StringLength(50)]
-        public string Username { get; set; }
+        public string AUsername { get; set; }
 
         [Required]
         [StringLength(12,MinimumLength=6,ErrorMessage ="You must specify password between 6 and 12 characters")]
@@ -18,10 +18,13 @@ namespace MovieRentalApp.Dtos
 
         [Required]
         [EmailAddress]
-        public string Email { get; set; }
+        public string AEmail { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string Name { get; set; }
+        public string Aname { get; set; }
+
+        [Required]
+        public DateTime ADob { get; set; }
     }
 }

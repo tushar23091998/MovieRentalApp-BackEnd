@@ -29,6 +29,7 @@ namespace MovieRentalApp.Helpers
             CreateMap<TblOrder, OrderForMappingDto>();
             CreateMap<TblMovie, OrderToMovieDto>();
             CreateMap<UserForUpdateDto, TblUser>();
+            CreateMap<UserForRegisterDto, TblUser>();
         }
 
     }

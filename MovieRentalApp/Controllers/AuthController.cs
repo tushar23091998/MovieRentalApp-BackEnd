@@ -1,4 +1,5 @@
 ﻿//using AutoMapper.Configuration;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -22,31 +23,43 @@ namespace MovieRentalApp.Controllers
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
+        private readonly IMapper _mapper;
 
-        public AuthController(IAuthRepository repo, IConfiguration config)
+        public AuthController(IAuthRepository repo, IConfiguration config, IMapper mapper)
         {
             _repo = repo;
             _config = config;
+            _mapper = mapper;
         }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
         {
-            userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
+            userForRegisterDto.AUsername = userForRegisterDto.AUsername.ToLower();
 
-            if (await _repo.UserExists(userForRegisterDto.Username))
+            if (await _repo.UserExists(userForRegisterDto.AUsername))
                 return BadRequest("username already exists");
 
-            var userToCreate = new TblUser
-            {
-                AUsername = userForRegisterDto.Username,
-                Aname = userForRegisterDto.Name,
-                AEmail = userForRegisterDto.Email.ToString()
-            };
+            //var userToCreate = new TblUser
+            //{
+            //    AUsername = userForRegisterDto.AUsername,
+            //    Aname = userForRegisterDto.Aname,
+            //    AEmail = userForRegisterDto.AEmail.ToString(),
+            //    ADob = userForRegisterDto.ADob
+            //};
+
+            var userToCreate = _mapper.Map<TblUser>(userForRegisterDto);
 
             var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
 
-            return StatusCode(201);
+            var userToReturn = _mapper.Map<UserForDetailedDto>(createdUser);
+
+            return CreatedAtRoute("GetUser", new
+            {
+                controller = "Users",
+                id = createdUser.ACustomerId
+            }, userToReturn
+            );
         }
 
 
@@ -54,7 +67,7 @@ namespace MovieRentalApp.Controllers
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {
 
-                var userFromRepo = await _repo.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password.ToLower());
+                var userFromRepo = await _repo.Login(userForLoginDto.AUsername.ToLower(), userForLoginDto.Password.ToLower());
                 if (userFromRepo == null)
                 {
                     return Unauthorized();
