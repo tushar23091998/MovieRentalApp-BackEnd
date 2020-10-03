@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MovieRentalApp.Helpers;
 using MovieRentalApp.Interfaces;
 using MovieRentalApp.Models;
 using System;
@@ -35,10 +36,24 @@ namespace MovieRentalApp.Data
             return movie;
         }
 
-        public async Task<IEnumerable<TblMovie>> GetMovies()
+        public async Task<PagedList<TblMovie>> GetMovies(MovieParams movieParams)
         {
-            var movies = await _context.TblMovie.ToListAsync();
-            return movies;
+            var movies =  _context.TblMovie.OrderByDescending(movie => movie.ARating);
+
+            if (!string.IsNullOrEmpty(movieParams.OrderBy))
+            {
+                switch (movieParams.OrderBy)
+                {
+                    case "rating":
+                        movies = movies.OrderByDescending(movie => movie.ARating);
+                        break;
+                    default:
+                        movies = movies.OrderBy(movie => movie.APrice);
+                        break;
+                }
+            }
+
+            return await PagedList<TblMovie>.CreateAsync(movies, movieParams.PageNumber, movieParams.PageSize);
         }
 
 

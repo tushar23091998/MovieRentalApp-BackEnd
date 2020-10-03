@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using MovieRentalApp.Dtos;
+using MovieRentalApp.Helpers;
 
 namespace MovieRentalApp.Controllers
 {
@@ -29,10 +30,11 @@ namespace MovieRentalApp.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> GetMovies()
+        public async Task<IActionResult> GetMovies([FromQuery]MovieParams movieParams)
         {
-            var movies = await _repo.GetMovies();
+            var movies = await _repo.GetMovies(movieParams);
             var moviesToReturn = _mapper.Map<IEnumerable<MovieForListDto>>(movies);
+            Response.AddPagination(movies.CurrentPage, movies.PageSize, movies.TotalCount, movies.TotalPages);
             return Ok(moviesToReturn);
         }
 

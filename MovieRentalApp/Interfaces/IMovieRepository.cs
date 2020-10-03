@@ -1,4 +1,5 @@
-﻿using MovieRentalApp.Models;
+﻿using MovieRentalApp.Helpers;
+using MovieRentalApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace MovieRentalApp.Interfaces
         void Add<T>(T entity) where T : class;
         void Delete<T>(T entity) where T : class;
         Task<bool> SaveAll();
-        Task<IEnumerable<TblMovie>> GetMovies();
+        Task<PagedList<TblMovie>> GetMovies(MovieParams movieParams);
         Task<TblMovie> GetMovie(int id);
     }
 }
