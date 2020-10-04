@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MovieRentalApp.Helpers;
 using MovieRentalApp.Interfaces;
 using MovieRentalApp.Models;
 using System;
@@ -34,10 +35,23 @@ namespace MovieRentalApp.Data
             return user;
         }
 
-        public async Task<IEnumerable<TblUser>> GetUsers()
+        public async Task<IEnumerable<TblUser>> GetUsers(UserParams userParams)
         {
-            var users = await _context.TblUser.ToListAsync();
-            return users;
+            var users = _context.TblUser.OrderBy(user => user.ACustomerId);
+
+            if (!string.IsNullOrEmpty(userParams.OrderBy))
+            {
+                switch (userParams.OrderBy)
+                {
+                    case "acustomerid":
+                        users = users.OrderBy(user => user.ACustomerId);
+                        break;
+                    default:
+                        users = users.OrderBy(user => user.AUsername);
+                        break;
+                }
+            }
+            return await users.ToListAsync();
         }
 
         public async Task<bool> SaveAll()
