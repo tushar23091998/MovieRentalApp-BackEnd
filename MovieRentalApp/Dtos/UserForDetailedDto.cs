@@ -17,6 +17,6 @@ namespace MovieRentalApp.Dtos
         public string AUsername { get; set; }
         public int AMoviesRented { get; set; }
         public bool AAdmin { get; set; }
-        public ICollection<OrderForMappingDto> Orders { get; set; }
+        public ICollection<OrderForMappingDto> TblOrder { get; set; }
     }
 }
