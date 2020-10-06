@@ -7,6 +7,7 @@ namespace MovieRentalApp.Dtos
 {
     public class DirectorNameDto
     {
+        public int ADirectorId { get; set; }
         public string ADirectorName { get; set; }
     }
 }

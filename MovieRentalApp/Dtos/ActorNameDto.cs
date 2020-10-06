@@ -7,6 +7,7 @@ namespace MovieRentalApp.Dtos
 {
     public class ActorNameDto
     {
+        public int AActorId { get; set; }
         public string AActorName { get; set; }
     }
 }

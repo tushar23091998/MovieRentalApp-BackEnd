@@ -47,6 +47,7 @@ namespace MovieRentalApp
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options => {
                 options.TokenValidationParameters = new TokenValidationParameters
