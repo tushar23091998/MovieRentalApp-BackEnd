@@ -26,7 +26,7 @@ namespace MovieRentalApp.Helpers
             CreateMap<TblUser, UserForDetailedDto>()
                 .ForMember(dest => dest.Age, opt =>
                       opt.MapFrom(src => src.ADob.CalculateAge()));
-            CreateMap<TblOrder, OrderForMappingDto>();
+            CreateMap<TblOrder, OrderForMappingDto>().ReverseMap();
             CreateMap<TblMovie, OrderToMovieDto>();
             CreateMap<UserForUpdateDto, TblUser>();
             CreateMap<UserForRegisterDto, TblUser>();
