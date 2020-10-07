@@ -9,9 +9,9 @@ namespace MovieRentalApp.Interfaces
 {
     public interface IMovieRepository
     {
-        void Add<T>(T entity) where T : class;
-        void Delete<T>(T entity) where T : class;
-        Task<bool> SaveAll();
+        Task<TblMovie> AddMovie(TblMovie tblMovie);
+        void Delete(TblMovie tblMovie);
+        Task<bool> MovieExists(string movieName);
         Task<PagedList<TblMovie>> GetMovies(MovieParams movieParams);
         Task<TblMovie> GetMovie(int id);
     }

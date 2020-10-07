@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MovieRentalApp.Helpers;
 using MovieRentalApp.Interfaces;
 using MovieRentalApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace MovieRentalApp.Data
@@ -17,14 +19,17 @@ namespace MovieRentalApp.Data
         {
             _context = context;
         }
-        public void Add<T>(T entity) where T : class
+        public async Task<TblMovie> AddMovie(TblMovie tblMovie)
         {
-            _context.Add(entity);
+            await _context.TblMovie.AddAsync(tblMovie);
+            await _context.SaveChangesAsync();
+            return tblMovie;
         }
 
-        public void Delete<T>(T entity) where T : class
+        public void Delete(TblMovie tblMovie)
         {
-            _context.Remove(entity);
+             _context.TblMovie.Remove(tblMovie);
+             _context.SaveChangesAsync();
         }
 
         public async Task<TblMovie> GetMovie(int id)
@@ -57,9 +62,11 @@ namespace MovieRentalApp.Data
         }
 
 
-        public async Task<bool> SaveAll()
+        public async Task<bool> MovieExists(string movieName)
         {
-            return await _context.SaveChangesAsync() > 0;
+            if (await _context.TblMovie.AnyAsync(x => x.ATitle.ToLower() == movieName.ToLower()))
+                return true;
+            return false;
         }
     }
 }

@@ -15,7 +15,7 @@ namespace MovieRentalApp.Helpers
         public AutoMapperProfiles()
         {
             CreateMap<TblMovie, MovieForListDto>();
-            CreateMap<TblMovie, MovieForDetailedDto>();
+            CreateMap<TblMovie, MovieForDetailedDto>().ReverseMap();
             CreateMap<TblMovieActorMapping, ActorForMappingDto>();
             CreateMap<TblMovieDirectorMapping, DirectorForMappingDto>();
             CreateMap<TblActor, ActorNameDto>();
