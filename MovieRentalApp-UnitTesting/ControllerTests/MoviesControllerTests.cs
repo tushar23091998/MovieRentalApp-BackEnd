@@ -5,6 +5,7 @@ using Moq;
 using MovieRentalApp.Controllers;
 using MovieRentalApp.Data;
 using MovieRentalApp.Dtos;
+using MovieRentalApp.Helpers;
 using MovieRentalApp.Interfaces;
 using MovieRentalApp.Models;
 using MovieRentalApp_UnitTesting.ControllerTests;
@@ -17,7 +18,7 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
 using System.Web.Http.Results;
 
-namespace MovieRentalApp.UnitTests.ControllerTests
+namespace MovieRentalApp_UnitTesting.ControllerTests
 {
     [TestFixture]
     public class MoviesControllerTests
@@ -59,10 +60,10 @@ namespace MovieRentalApp.UnitTests.ControllerTests
             _mockMovieRepository = new Mock<IMovieRepository>();
             _mockMovieMapper = new Mock<IMapper>();
             _mockMovieMapper.Setup(mapper => mapper.Map<IEnumerable<MovieForListDto>>(It.IsAny<TblMovie[]>())).Returns(movieForListDtos);
-            _mockMovieRepository.Setup(repo => repo.GetMovies(new Helpers.MovieParams{}))
+            _mockMovieRepository.Setup(repo => repo.GetMovies(new MovieParams{}))
             .ReturnsAsync(getMoviesHelper.getMovieFromList());
             _moviesController = new MoviesController(_mockMovieRepository.Object, _mockMovieMapper.Object);
-            var movies = await _moviesController.GetMovies(new Helpers.MovieParams{});
+            var movies = await _moviesController.GetMovies(new MovieParams{});
             var okResult = movies as OkObjectResult;
             var result = ((OkObjectResult)movies).Value;
             Assert.AreEqual(result, movieForListDtos);

@@ -40,6 +40,10 @@ namespace MovieRentalApp.Controllers
         public async Task<IActionResult> GetUser(int id)
         {
             var user = await _repo.GetUser(id);
+            if (user == null)
+            {
+                return BadRequest("Object with Id not found");
+            }
             var userToReturn = _mapper.Map<UserForDetailedDto>(user);
             return Ok(userToReturn);
         }
