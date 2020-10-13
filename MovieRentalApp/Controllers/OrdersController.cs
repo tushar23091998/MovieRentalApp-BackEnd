@@ -28,8 +28,12 @@ namespace MovieRentalApp.Controllers
         [HttpPost()]
         public async Task<IActionResult> AddOrder(OrderForMappingDto orderForMappingDto)
         {
+            if (!ModelState.IsValid || orderForMappingDto.AMovieId == null || orderForMappingDto.ACustomerId == null || orderForMappingDto.AOrderedDate == null
+                || (orderForMappingDto.ARentalOrNot == true && orderForMappingDto.ADueDate == null) )
+            {
+                return BadRequest("Should not be null and model state should be valid");
+            }
             var orderToCreate = _mapper.Map<TblOrder>(orderForMappingDto);
-
             var createdOrder = await _repo.AddOrder(orderToCreate);
 
             return Ok(createdOrder);

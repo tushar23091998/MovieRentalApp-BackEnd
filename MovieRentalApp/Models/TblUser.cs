@@ -30,7 +30,7 @@ namespace MovieRentalApp.Models
         public string AAddress { get; set; }
         [Column("A_DOB", TypeName = "date")]
         public DateTime ADob { get; set; }
-        //[Required]
+        [Required]
         [Column("A_EMAIL")]
         [StringLength(200)]
         public string AEmail { get; set; }
@@ -38,7 +38,7 @@ namespace MovieRentalApp.Models
         [Column("A_PHONE")]
         [StringLength(10)]
         public string APhone { get; set; }
-        //[Required]
+        [Required]
         [Column("A_NAME")]
         [StringLength(50)]
         public string Aname { get; set; }

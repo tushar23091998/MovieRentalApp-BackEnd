@@ -40,14 +40,6 @@ namespace MovieRentalApp.Controllers
             if (await _repo.UserExists(userForRegisterDto.AUsername))
                 return BadRequest("username already exists");
 
-            //var userToCreate = new TblUser
-            //{
-            //    AUsername = userForRegisterDto.AUsername,
-            //    Aname = userForRegisterDto.Aname,
-            //    AEmail = userForRegisterDto.AEmail.ToString(),
-            //    ADob = userForRegisterDto.ADob
-            //};
-
             var userToCreate = _mapper.Map<TblUser>(userForRegisterDto);
 
             var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);

@@ -35,15 +35,19 @@ namespace MovieRentalApp.Controllers
         {
             var movies = await _repo.GetMovies(movieParams);
             var moviesToReturn = _mapper.Map<IEnumerable<MovieForListDto>>(movies);
-            Response.AddPagination(movies.CurrentPage, movies.PageSize, movies.TotalCount, movies.TotalPages);
             return Ok(moviesToReturn);
         }
+        //Response.AddPagination(movies.CurrentPage, movies.PageSize, movies.TotalCount, movies.TotalPages);
 
         [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetMovie(int id)
         {
             var movie = await _repo.GetMovie(id);
+            if (movie == null)
+            {
+                return BadRequest("Object with Id not found");
+            }
             var movieToReturn = _mapper.Map<MovieForDetailedDto>(movie);
             return Ok(movieToReturn);
         }
@@ -54,6 +58,11 @@ namespace MovieRentalApp.Controllers
         { 
             if (await _repo.MovieExists(movieForDetailedDto.ATitle))
                 return BadRequest("movie already exists");
+
+            else if(!ModelState.IsValid || movieForDetailedDto.ATitle == null || movieForDetailedDto.APrice == null || movieForDetailedDto.AMovieDescription ==null)
+            {
+                return BadRequest("movie details not valid");
+            }
 
             var movieToCreate = _mapper.Map<TblMovie>(movieForDetailedDto);
 
@@ -67,6 +76,10 @@ namespace MovieRentalApp.Controllers
         public async Task<IActionResult> Delete(int id)
         {
                 var tblMovie = await _repo.GetMovie(id);
+                if(tblMovie == null)
+                {
+                    return BadRequest("Object with Id not found");
+                }
                 _repo.Delete(tblMovie);
                 return Ok("object deleted");
         }

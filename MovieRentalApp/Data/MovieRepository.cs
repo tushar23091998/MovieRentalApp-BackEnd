@@ -41,9 +41,9 @@ namespace MovieRentalApp.Data
             return movie;
         }
 
-        public async Task<PagedList<TblMovie>> GetMovies(MovieParams movieParams)
+        public async Task<IEnumerable<TblMovie>> GetMovies(MovieParams movieParams)
         {
-            var movies =  _context.TblMovie.OrderByDescending(movie => movie.ARating);
+            var movies = _context.TblMovie.OrderByDescending(movie => movie.ARating);
 
             if (!string.IsNullOrEmpty(movieParams.OrderBy))
             {
@@ -58,7 +58,7 @@ namespace MovieRentalApp.Data
                 }
             }
 
-            return await PagedList<TblMovie>.CreateAsync(movies, movieParams.PageNumber, movieParams.PageSize);
+            return await movies.ToListAsync();
         }
 
 

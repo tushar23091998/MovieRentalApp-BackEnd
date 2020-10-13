@@ -11,14 +11,24 @@ namespace MovieRentalApp.Models
         [Key]
         [Column("A_ORDER_ID")]
         public int AOrderId { get; set; }
+
+        [Required]
         [Column("A_CUSTOMER_ID")]
         public int ACustomerId { get; set; }
+
+        [Required]
         [Column("A_MOVIE_ID")]
         public int AMovieId { get; set; }
+
+        [Required]
         [Column("A_RENTAL_OR_NOT")]
         public bool ARentalOrNot { get; set; }
+
+        [Required]
         [Column("A_ORDERED_DATE", TypeName = "date")]
         public DateTime AOrderedDate { get; set; }
+
+
         [Column("A_DUE_DATE", TypeName = "date")]
         public DateTime? ADueDate { get; set; }
 

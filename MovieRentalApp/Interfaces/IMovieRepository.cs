@@ -12,7 +12,7 @@ namespace MovieRentalApp.Interfaces
         Task<TblMovie> AddMovie(TblMovie tblMovie);
         void Delete(TblMovie tblMovie);
         Task<bool> MovieExists(string movieName);
-        Task<PagedList<TblMovie>> GetMovies(MovieParams movieParams);
+        Task<IEnumerable<TblMovie>> GetMovies(MovieParams movieParams);
         Task<TblMovie> GetMovie(int id);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,16 +8,27 @@ namespace MovieRentalApp.Dtos
 {
     public class MovieForListDto
     {
-        public int AMovieId { get; set; }
-        public string ATitle { get; set; }
-        public string AMovieDescription { get; set; }
-        public string ADuration { get; set; }
-        public string APrice { get; set; }
-        public string APurchasePrice { get; set; }
-        public int ARating { get; set; }
-        public string AImageLink { get; set; }
-        public string ATrailerLink { get; set; }
-        public string AGenre { get; set; }
-        public string AWideImage { get; set; }
+        [Required]
+        public int? AMovieId { get; set; }
+        [Required]
+        public string? ATitle { get; set; }
+        [Required]
+        public string? AMovieDescription { get; set; }
+        [Required]
+        public string? ADuration { get; set; }
+        [Required]
+        public string? APrice { get; set; }
+        [Required]
+        public string? APurchasePrice { get; set; }
+        [Required]
+        public int? ARating { get; set; }
+        [Required]
+        public string? AImageLink { get; set; }
+        [Required]
+        public string? ATrailerLink { get; set; }
+        [Required]
+        public string? AGenre { get; set; }
+        [Required]
+        public string? AWideImage { get; set; }
     }
 }
