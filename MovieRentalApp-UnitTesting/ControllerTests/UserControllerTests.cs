@@ -6,6 +6,7 @@ using MovieRentalApp.Dtos;
 using MovieRentalApp.Helpers;
 using MovieRentalApp.Interfaces;
 using MovieRentalApp.Models;
+using MovieRentalApp_UnitTesting.Helpers;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,9 @@ namespace MovieRentalApp_UnitTesting.ControllerTests
     {
         private Mock<IUserRepository> _mockUserRepository;
         private Mock<IMapper> _mockUserMapper;
+        private Mock<IUpdateUser> _mockUpdateUser;
         private UsersController _usersController;
+        private UpdateUserController _updateUserController;
 
         [Test]
         public async Task CallGetRequest_WhenCalled_ReturnsAllUsers()
@@ -94,6 +97,64 @@ namespace MovieRentalApp_UnitTesting.ControllerTests
             Assert.AreEqual(result, userForDetailedDto);
             Assert.NotNull(result);
             Assert.IsAssignableFrom<UserForDetailedDto>(result);
+        }
+
+
+        [Test]
+        public async Task CallUpdateUser_WhenCalledWithId_ReturnsNoContentwithsavedChanges()
+        {
+            getUsersHelper getUsersHelper = new getUsersHelper();
+            List<TblUser> userList = getUsersHelper.getUserFromList();
+            var user = getUsersHelper.userById(3);
+            _mockUserRepository = new Mock<IUserRepository>();
+            _mockUserMapper = new Mock<IMapper>();
+            _mockUpdateUser = new Mock<IUpdateUser>();
+            UserForUpdateDto userForUpdateDto = new UserForUpdateDto
+            {
+                AAddress = "some street",
+                Aname = "Johnny",
+                APhone = "9876543211"
+            };
+            //_mockUserMapper.Setup(mapper => mapper.Map<TblUser>(It.IsAny<UserForDetailedDto>()))
+            //    .Returns(getUsersHelper.userById(3));
+            _mockUpdateUser.Setup(update => update.updateOrNot(It.IsAny<bool>())).Returns(false);
+            _mockUserMapper.Setup(mapper => mapper.Map<UserForUpdateDto>(It.IsAny<TblUser>())).Returns(userForUpdateDto);
+            _mockUserRepository.Setup(repo => repo.GetUser(It.IsAny<int>()))
+                    .ReturnsAsync(getUsersHelper.userById(3));
+            _mockUserRepository.Setup(repo => repo.SaveAll()).ReturnsAsync(true);
+            _updateUserController = new UpdateUserController(_mockUserRepository.Object, _mockUserMapper.Object, _mockUpdateUser.Object);
+            var tblUser = await _updateUserController.UpdateUser(3, userForUpdateDto);
+            var okResult = tblUser as OkObjectResult;
+            //Assert.AreEqual(200, okResult.StatusCode);
+            Assert.IsAssignableFrom<NoContentResult>(tblUser);
+        }
+
+        [Test]
+        public async Task CallUpdateUser_WhenCalledWithUnauthorizedId_ReturnsUnauthorized()
+        {
+            getUsersHelper getUsersHelper = new getUsersHelper();
+            List<TblUser> userList = getUsersHelper.getUserFromList();
+            var user = getUsersHelper.userById(3);
+            _mockUserRepository = new Mock<IUserRepository>();
+            _mockUserMapper = new Mock<IMapper>();
+            _mockUpdateUser = new Mock<IUpdateUser>();
+            UserForUpdateDto userForUpdateDto = new UserForUpdateDto
+            {
+                AAddress = "some street",
+                Aname = "Johnny",
+                APhone = "9876543211"
+            };
+            //_mockUserMapper.Setup(mapper => mapper.Map<TblUser>(It.IsAny<UserForDetailedDto>()))
+            //    .Returns(getUsersHelper.userById(3));
+            _mockUpdateUser.Setup(update => update.updateOrNot(It.IsAny<bool>())).Returns(true);
+            _mockUserMapper.Setup(mapper => mapper.Map<UserForUpdateDto>(It.IsAny<TblUser>())).Returns(userForUpdateDto);
+            _mockUserRepository.Setup(repo => repo.GetUser(It.IsAny<int>()))
+                    .ReturnsAsync(getUsersHelper.userById(3));
+            _mockUserRepository.Setup(repo => repo.SaveAll()).ReturnsAsync(true);
+            _updateUserController = new UpdateUserController(_mockUserRepository.Object, _mockUserMapper.Object, _mockUpdateUser.Object);
+            var tblUser =await _updateUserController.UpdateUser(3, userForUpdateDto);
+            //Assert.AreEqual(200, okResult.StatusCode);
+            Assert.IsAssignableFrom<UnauthorizedResult>(tblUser);
         }
     }
 }

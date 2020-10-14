@@ -12,7 +12,8 @@ namespace MovieRentalApp.Interfaces
         void Add<T>(T entity) where T : class;
         void Delete<T>(T entity) where T : class;
         Task<bool> SaveAll();
-        Task<IEnumerable<TblUser>> GetUsers(UserParams userParams);
         Task<TblUser> GetUser(int id);
+        Task<IEnumerable<TblUser>> GetUsers(UserParams userParams);
+        
     }
 }

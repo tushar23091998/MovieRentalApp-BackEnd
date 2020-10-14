@@ -31,6 +31,19 @@ namespace MovieRentalApp_UnitTesting.ControllerTests
             }
             return tUser;
         }
+
+        public TblUser userByUserNameExistsThroughusername(string username)
+        {
+            var users = getUserFromList();
+            foreach (TblUser tblUser in users)
+            {
+                if (tblUser.AUsername == username)
+                {
+                    return tblUser;
+                }
+            }
+            return null;
+        }
         public List<TblUser> getUserFromList()
         {
             var users = new List<TblUser>();
