@@ -1,61 +1,35 @@
-﻿using System;
+﻿using MovieRentalApp.Automation.UI.PageObjectModels;
+using MovieRentalApp.Automation.UI.PageObjectModels.Authentication;
+using MovieRentalApp.Automation.UI.PageObjectModels.Movies;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
+using Xunit;
 
 namespace MovieRentalApp.Automation.UI.Steps.Authentication
 {
     [Binding]
-    public sealed class LoginSteps
+    [Scope(Feature = "Login")]
+    public  class LoginSteps : BaseSteps
     {
-        // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
+        private NavBarPage _navBarPage = new NavBarPage(DriverContext.Driver);
+        private LoginPage _loginPage;
+        private MovieCarouselPage _movieCarouselPage;
 
-        private readonly ScenarioContext _scenarioContext;
-
-        public LoginSteps(ScenarioContext scenarioContext)
+        [Then(@"I click Sign In link")]
+        public void ThenIClickSignInLink()
         {
-            _scenarioContext = scenarioContext;
+            _loginPage = _navBarPage.openLogin();
         }
 
-        [Given("the first number is (.*)")]
-        public void GivenTheFirstNumberIs(int number)
+        [When(@"I enter UserName and Password and click login button")]
+        public void WhenIEnterUserNameAndPasswordAndClickLoginButton(Table table)
         {
-            //TODO: implement arrange (precondition) logic
-            // For storing and retrieving scenario-specific data see https://go.specflow.org/doc-sharingdata 
-            // To use the multiline text or the table argument of the scenario,
-            // additional string/Table parameters can be defined on the step definition
-            // method. 
-
-            _scenarioContext.Pending();
-        }
-
-        [Given("the second number is (.*)")]
-        public void GivenTheSecondNumberIs(int number)
-        {
-            //TODO: implement arrange (precondition) logic
-            // For storing and retrieving scenario-specific data see https://go.specflow.org/doc-sharingdata 
-            // To use the multiline text or the table argument of the scenario,
-            // additional string/Table parameters can be defined on the step definition
-            // method. 
-
-            _scenarioContext.Pending();
-        }
-
-        [When("the two numbers are added")]
-        public void WhenTheTwoNumbersAreAdded()
-        {
-            //TODO: implement act (action) logic
-
-            _scenarioContext.Pending();
-        }
-
-        [Then("the result should be (.*)")]
-        public void ThenTheResultShouldBe(int result)
-        {
-            //TODO: implement assert (verification) logic
-
-            _scenarioContext.Pending();
+            dynamic data = table.CreateDynamicInstance();
+            _movieCarouselPage =_loginPage.Login(data.UserName, data.Password);
         }
     }
 }

@@ -108,4 +108,6 @@ C:\MovieRentalApp\MovieRentalApp\MovieRentalApp.Automation.UI\obj\Debug\netcorea
 C:\MovieRentalApp\MovieRentalApp\MovieRentalApp.Automation.UI\obj\Debug\netcoreapp3.0\MovieRentalApp.Automation.UI.dll
 C:\MovieRentalApp\MovieRentalApp\MovieRentalApp.Automation.UI\obj\Debug\netcoreapp3.0\MovieRentalApp.Automation.UI.pdb
 C:\MovieRentalApp\MovieRentalApp\MovieRentalApp.Automation.UI\obj\Debug\netcoreapp3.0\MovieRentalApp.Automation.UI.genruntimeconfig.cache
+C:\MovieRentalApp\MovieRentalApp\MovieRentalApp.Automation.UI\bin\Debug\netcoreapp3.0\Dynamitey.dll
+C:\MovieRentalApp\MovieRentalApp\MovieRentalApp.Automation.UI\bin\Debug\netcoreapp3.0\SpecFlow.Assist.Dynamic.dll
 C:\MovieRentalApp\MovieRentalApp\MovieRentalApp.Automation.UI\obj\Debug\netcoreapp3.0\MovieRentalApp.Automation.UI.csproj.CoreCompileInputs.cache

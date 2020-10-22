@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MovieAutomationFramework>
+	<RunSettings>
+		<AUT>http://localhost:4200/home</AUT>
+		<!-- Possible flag Chrome,Firefox, IE-->
+		<Browser>Chrome</Browser>
+		<!-- Possible flag Smoke, Regression, Unit  -->
+		<TestType>SmokeTest</TestType>
+		
+		<!--<BuildName>DemoBuild</BuildName>-->
+	</RunSettings>
+</MovieAutomationFramework>

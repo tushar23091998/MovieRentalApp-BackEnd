@@ -66,6 +66,10 @@
               "target": "Package",
               "version": "[3.4.14, )"
             },
+            "SpecFlow.Assist.Dynamic": {
+              "target": "Package",
+              "version": "[1.4.2, )"
+            },
             "SpecFlow.Tools.MsBuild.Generation": {
               "target": "Package",
               "version": "[3.4.14, )"

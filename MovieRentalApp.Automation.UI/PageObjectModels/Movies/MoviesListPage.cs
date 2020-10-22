@@ -1,6 +1,8 @@
 ﻿using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading;
 
@@ -8,19 +10,31 @@ namespace MovieRentalApp.Automation.UI.PageObjectModels.Movies
 {
     public class MoviesListPage : BasePage
     {
-        string movieElement = "body > app-root > app-tblmovie > div:nth-child(2) > div > div:nth-child(1) > div > a > img";
+
         public MoviesListPage(IWebDriver webDriver) : base(webDriver) { }
+
         public IWebElement txtSearchBar => WebDriver.FindElement(By.Name("search"));
         public IWebElement priceToggle => WebDriver.FindElement(By.Id("rentalprice"));
         public IWebElement ratingsToggle => WebDriver.FindElement(By.Id("ratings"));
-        public IWebElement lnkMovie => WebDriver.FindElement(By.CssSelector(movieElement));
+        public ReadOnlyCollection<IWebElement> lnkMovies => WebDriver.FindElements(By.ClassName("movie-list"));
+        public IWebElement movieLink => WebDriver.FindElement(By.Id("movieImg"));
 
-        public void openMovie()
+        public void openMovieFromList(string movieName)
         {
-            NavBarPage navBarPage = new NavBarPage(DriverContext.Driver);
-            navBarPage.lnkMovieList.Click();
-            lnkMovie.Click();
-            Thread.Sleep(2000);
+            MoviesDetailPage moviesDetailPage = new MoviesDetailPage(DriverContext.Driver);
+            MovieHelper.ReadMovies(lnkMovies);
+            var index = MovieHelper.findMovieIndex(movieName);
+            lnkMovies.ElementAt(index).Click();
+            //txtSearchBar.SendKeys(movieName);
+            //movieLink.Click();
+            moviesDetailPage.addtoCart();
+            //txtSearchBar.Clear();
+            Thread.Sleep(1000);
+        }
+        public bool movieExists(string movieName)
+        {
+            MovieHelper.ReadMovies(lnkMovies);
+            return MovieHelper.ifMovieExists(movieName);
         }
     }
 }

@@ -1,5 +1,0 @@
-{
-  "Browser": "Chrome",
-  "BaseUrl": "http://localhost:4200/",
-  "ApiBaseUrl": "http://localhost:5000/"
-}

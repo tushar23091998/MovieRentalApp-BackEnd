@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using MovieRentalApp.Automation.UI.Config;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,5 +21,6 @@ namespace MovieRentalApp.Automation.UI
                 _webDriver = value;
             }
         }
+        public static Browser Browser { get; set; }
     }
 }

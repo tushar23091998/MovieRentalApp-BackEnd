@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using MovieRentalApp.Automation.UI.PageObjectModels.Movies;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,19 +18,20 @@ namespace MovieRentalApp.Automation.UI.PageObjectModels.Authentication
         public IWebElement txtDob => WebDriver.FindElement(By.Id("aDob"));
         public IWebElement btnLogin => WebDriver.FindElement(By.Id("button"));
 
-        public void Register()
+        public MovieCarouselPage Register(string username, string password, string confirmpassword, string email, string name, string dob)
         {
             NavBarPage navBarPage = new NavBarPage(DriverContext.Driver);
             navBarPage.lnkRegister.Click();
-            txtRegUsername.SendKeys("graham");
-            txtRegPassword.SendKeys("password");
-            txtConfirmPassword.SendKeys("password");
-            txtName.SendKeys("Graham");
-            txtEmail.SendKeys("graham@gmail.com");
-            txtDob.SendKeys("10/20/1998");
+            txtRegUsername.SendKeys(username);
+            txtRegPassword.SendKeys(password);
+            txtConfirmPassword.SendKeys(confirmpassword);
+            txtName.SendKeys(name);
+            txtEmail.SendKeys(email);
+            txtDob.SendKeys(dob);
             Thread.Sleep(1000);
             btnLogin.Click();
             Thread.Sleep(1000);
+            return new MovieCarouselPage(DriverContext.Driver);
         }
     }
 }

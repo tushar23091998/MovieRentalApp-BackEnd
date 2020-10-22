@@ -2,10 +2,22 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="Hooks\Authentication\RegisterHooks.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Hooks\Authentication\LoginHooks.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Steps\Authentication\LoginSteps.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Steps\MovieAddAndDeleteSteps.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Steps\PlaceOrderSteps.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Steps\UserEditSteps.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

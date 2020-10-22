@@ -1,26 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using TechTalk.SpecFlow;
+﻿//using MovieRentalApp.Automation.UI.Config;
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using TechTalk.SpecFlow;
 
-namespace MovieRentalApp.Automation.UI.Hooks
-{
-    [Binding]
-    public sealed class LoginHooks
-    {
-        // For additional details on SpecFlow hooks see http://go.specflow.org/doc-hooks
+//namespace MovieRentalApp.Automation.UI.Hooks
+//{
+//    [Binding]
+//    public  class LoginHooks
+//    {
+//        // For additional details on SpecFlow hooks see http://go.specflow.org/doc-hooks
 
-        [BeforeScenario]
-        public void BeforeScenario()
-        {
-            //TODO: implement logic that has to run before executing each scenario
-        }
+//        [BeforeScenario]
+//        public void BeforeScenario()
+//        {
+//            TestInitializeHook testInitializeHook = new TestInitializeHook(BrowserType.Chrome);
+//            testInitializeHook.InitializeSettings();
+//        }
 
-        [AfterScenario]
-        public void AfterScenario()
-        {
-            //TODO: implement logic that has to run after executing each scenario
-        }
-    }
-}
+//        [AfterScenario]
+//        public void AfterScenario()
+//        {
+
+//            DriverContext.Driver.Quit();
+//        }
+//    }
+//}
