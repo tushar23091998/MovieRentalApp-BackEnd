@@ -2,6 +2,7 @@
 using MovieRentalApp.Automation.UI.PageObjectModels;
 using MovieRentalApp.Automation.UI.PageObjectModels.Authentication;
 using MovieRentalApp.Automation.UI.PageObjectModels.Movies;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,9 @@ namespace MovieRentalApp.Automation.UI.Steps
     [Scope(Feature = "UserEdit")]
     public class UserEditSteps : BaseSteps
     {
-        private NavBarPage _navBarPage = new NavBarPage(DriverContext.Driver);
+        public UserEditSteps(FeatureContext featureContext) : base(featureContext) { }
+
+        private NavBarPage _navBarPage;
         private EditProfilePage _editProfilePage;
         private MovieCarouselPage _movieCarouselPage;
         private LoginPage _loginPage;
@@ -24,6 +27,7 @@ namespace MovieRentalApp.Automation.UI.Steps
         [Then(@"I click Sign In link")]
         public void ThenIClickSignInLink()
         {
+            _navBarPage = new NavBarPage(webDriver);
             _loginPage = _navBarPage.openLogin();
         }
 
@@ -51,7 +55,14 @@ namespace MovieRentalApp.Automation.UI.Steps
         public void ThenTheChangeShouldBeReflectedOnTheUserDetailsPage(string name)
         {
             Assert.True(_editProfilePage.changeReflected(name)); ;
+
         }
+        [Then(@"I close driver")]
+        public void ThenICloseDriver()
+        {
+            //TestEnd();
+        }
+
 
     }
 }

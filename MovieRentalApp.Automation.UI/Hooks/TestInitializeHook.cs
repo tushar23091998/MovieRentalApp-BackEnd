@@ -1,18 +1,43 @@
 ﻿using MovieRentalApp.Automation.UI.Config;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TechTalk.SpecFlow;
 
 namespace MovieRentalApp.Automation.UI.Hooks
 {
+    [Binding]
     public class TestInitializeHook
     {
-        public readonly BrowserType Browser;
+        protected readonly FeatureContext _featureContext;
+        public IWebDriver webDriver;
+        public Browser browser;
+        public BrowserType Browser;
 
-        public TestInitializeHook(BrowserType browser)
+        public TestInitializeHook(FeatureContext featureContext)
+        {
+            _featureContext = featureContext;
+        }
+        [BeforeScenario]
+        public void TestStart()
+        {
+            setBrowser(BrowserType.Chrome);
+            InitializeSettings();
+            _featureContext.Add("Driver", webDriver);
+        }
+
+        [AfterScenario]
+        public void TestEnd()
+        {
+            webDriver.Close();
+            webDriver.Quit();
+        }
+
+        public void setBrowser(BrowserType browser)
         {
             Browser = browser;
         }
@@ -24,28 +49,33 @@ namespace MovieRentalApp.Automation.UI.Hooks
             OpenBrowser(Browser);
         }
 
+        public IWebDriver getDriver()
+        {
+             return webDriver;
+        }
+
         private void OpenBrowser(BrowserType browserType = BrowserType.Chrome)
         {
             switch (browserType)
             {
                 case BrowserType.InternetExplorer:
-                    DriverContext.Driver = new InternetExplorerDriver();
-                    DriverContext.Browser = new Browser(DriverContext.Driver);
+                    webDriver = new InternetExplorerDriver();
+                    browser = new Browser(webDriver);
                     break;
                 case BrowserType.FireFox:
-                    DriverContext.Driver = new FirefoxDriver();
-                    DriverContext.Browser = new Browser(DriverContext.Driver);
+                    webDriver = new FirefoxDriver();
+                    browser = new Browser(webDriver);
                     break;
                 case BrowserType.Chrome:
-                    DriverContext.Driver = new ChromeDriver();
-                    DriverContext.Browser = new Browser(DriverContext.Driver);
+                    webDriver = new ChromeDriver();
+                    browser = new Browser(webDriver);
                     break;
             }
 
         }
-        public  void NavigateSite()
-        {
-            DriverContext.Browser.GoToUrl(Settings.AUT);
-        }
+        //public void NavigateSite()
+        //{
+        //    browser.GoToUrl(Settings.AUT);
+        //}
     }
 }

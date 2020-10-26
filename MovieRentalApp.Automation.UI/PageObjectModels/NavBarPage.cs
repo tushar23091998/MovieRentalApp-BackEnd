@@ -23,44 +23,44 @@ namespace MovieRentalApp.Automation.UI.PageObjectModels
         public MovieCarouselPage Logout()
         {
             lnkLogOut.Click();
-            return new MovieCarouselPage(DriverContext.Driver);
+            return new MovieCarouselPage(WebDriver);
         }
         public LoginPage openLogin()
         {
             lnkSignIn.Click();
-            return new LoginPage(DriverContext.Driver);
+            return new LoginPage(WebDriver);
         }
         public RegisterPage openRegister()
         {
             lnkRegister.Click();
-            return new RegisterPage(DriverContext.Driver);
+            return new RegisterPage(WebDriver);
         }
         public MoviesListPage goToMovies()
         {
             lnkMovieList.Click();
-            return new MoviesListPage(DriverContext.Driver);
+            return new MoviesListPage(WebDriver);
         }
         public MovieCarouselPage goToHome()
         {
             lnkHome.Click();
-            return new MovieCarouselPage(DriverContext.Driver);
+            return new MovieCarouselPage(WebDriver);
         }
         public CartPage openCart()
         {
             lnkCart.Click();
-            return new CartPage(DriverContext.Driver);
+            return new CartPage(WebDriver);
         }
         public UserOrdersPage openUserOrder()
         {
             lnkDropdown.Click();
             lnkOrder.Click();
-            return new UserOrdersPage(DriverContext.Driver);
+            return new UserOrdersPage(WebDriver);
         }
         public EditProfilePage openEditProfile()
         {
             lnkDropdown.Click();
             lnkEditProfile.Click();
-            return new EditProfilePage(DriverContext.Driver);
+            return new EditProfilePage(WebDriver);
         }
         public string getLoggedInUser()
         {

@@ -36,12 +36,12 @@ namespace MovieRentalApp.Automation.UI.PageObjectModels.Movies
             txtTrailer.SendKeys(MovieTrailerLink);
             txtWideImage.SendKeys(MovieWideImagelink);
             btnAddMovie.Click();
-            return new MovieCarouselPage(DriverContext.Driver);
+            return new MovieCarouselPage(WebDriver);
         }
         public MoviesDeletePage openDeleteMovie()
         {
             btnDeleteMovie.Click();
-            return new MoviesDeletePage(DriverContext.Driver);
+            return new MoviesDeletePage(WebDriver);
         }
     }
 }

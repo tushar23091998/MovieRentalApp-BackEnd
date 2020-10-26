@@ -132,9 +132,6 @@ this.ScenarioInitialize(scenarioInfo);
 #line 12
  testRunner.When("I enter UserName and Password and click login button", ((string)(null)), table6, "When ");
 #line hidden
-#line 15
- testRunner.Then("I should see the login username with welcome", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
 #line 16
  testRunner.When("I open Edit Profile Page from dropdown button on Navbar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
@@ -168,6 +165,9 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 25
  testRunner.Then("the name change John Doe should be reflected on the user details page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 26
+ testRunner.And("I close driver", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();

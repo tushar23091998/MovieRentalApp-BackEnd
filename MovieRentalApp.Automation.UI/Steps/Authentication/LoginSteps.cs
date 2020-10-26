@@ -1,6 +1,7 @@
 ﻿using MovieRentalApp.Automation.UI.PageObjectModels;
 using MovieRentalApp.Automation.UI.PageObjectModels.Authentication;
 using MovieRentalApp.Automation.UI.PageObjectModels.Movies;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,13 +16,16 @@ namespace MovieRentalApp.Automation.UI.Steps.Authentication
     [Scope(Feature = "Login")]
     public  class LoginSteps : BaseSteps
     {
-        private NavBarPage _navBarPage = new NavBarPage(DriverContext.Driver);
+        public LoginSteps(FeatureContext featureContext) : base(featureContext) { }
+
+        private NavBarPage _navBarPage;
         private LoginPage _loginPage;
         private MovieCarouselPage _movieCarouselPage;
 
         [Then(@"I click Sign In link")]
         public void ThenIClickSignInLink()
         {
+            _navBarPage = new NavBarPage(webDriver);
             _loginPage = _navBarPage.openLogin();
         }
 

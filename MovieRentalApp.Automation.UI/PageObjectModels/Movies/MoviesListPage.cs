@@ -21,8 +21,8 @@ namespace MovieRentalApp.Automation.UI.PageObjectModels.Movies
 
         public void openMovieFromList(string movieName)
         {
-            MoviesDetailPage moviesDetailPage = new MoviesDetailPage(DriverContext.Driver);
-            MovieHelper.ReadMovies(lnkMovies);
+            MoviesDetailPage moviesDetailPage = new MoviesDetailPage(WebDriver);
+            MovieHelper.ReadMovies(lnkMovies, WebDriver);
             var index = MovieHelper.findMovieIndex(movieName);
             lnkMovies.ElementAt(index).Click();
             //txtSearchBar.SendKeys(movieName);
@@ -33,7 +33,7 @@ namespace MovieRentalApp.Automation.UI.PageObjectModels.Movies
         }
         public bool movieExists(string movieName)
         {
-            MovieHelper.ReadMovies(lnkMovies);
+            MovieHelper.ReadMovies(lnkMovies, WebDriver);
             return MovieHelper.ifMovieExists(movieName);
         }
     }

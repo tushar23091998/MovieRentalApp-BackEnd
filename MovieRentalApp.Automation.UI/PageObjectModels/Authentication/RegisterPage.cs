@@ -20,7 +20,7 @@ namespace MovieRentalApp.Automation.UI.PageObjectModels.Authentication
 
         public MovieCarouselPage Register(string username, string password, string confirmpassword, string email, string name, string dob)
         {
-            NavBarPage navBarPage = new NavBarPage(DriverContext.Driver);
+            NavBarPage navBarPage = new NavBarPage(WebDriver);
             navBarPage.lnkRegister.Click();
             txtRegUsername.SendKeys(username);
             txtRegPassword.SendKeys(password);
@@ -31,7 +31,7 @@ namespace MovieRentalApp.Automation.UI.PageObjectModels.Authentication
             Thread.Sleep(1000);
             btnLogin.Click();
             Thread.Sleep(1000);
-            return new MovieCarouselPage(DriverContext.Driver);
+            return new MovieCarouselPage(WebDriver);
         }
     }
 }

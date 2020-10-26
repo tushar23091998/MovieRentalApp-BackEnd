@@ -17,10 +17,10 @@ namespace MovieRentalApp.Automation.UI.PageObjectModels.Movies
         public ReadOnlyCollection<IWebElement> lnkMovies => WebDriver.FindElements(By.ClassName("movie-list"));
         public void openMovieFromCarousel(string movieName)
         {
-            MoviesDetailPage moviesDetailPage = new MoviesDetailPage(DriverContext.Driver);
-            NavBarPage navBarPage = new NavBarPage(DriverContext.Driver);
+            MoviesDetailPage moviesDetailPage = new MoviesDetailPage(WebDriver);
+            NavBarPage navBarPage = new NavBarPage(WebDriver);
             navBarPage.lnkHome.Click();
-            MovieHelper.ReadMovies(lnkMovies);
+            MovieHelper.ReadMovies(lnkMovies, WebDriver);
             var index = MovieHelper.findMovieIndex(movieName);
             lnkMovies.ElementAt(index).Click();
             moviesDetailPage.addtoCart();

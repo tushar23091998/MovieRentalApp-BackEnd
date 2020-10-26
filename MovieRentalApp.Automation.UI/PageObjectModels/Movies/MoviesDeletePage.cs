@@ -16,13 +16,13 @@ namespace MovieRentalApp.Automation.UI.PageObjectModels.Movies
         public MovieAddPage openAddMovie()
         {
             btnAddmovie.Click();
-            return new MovieAddPage(DriverContext.Driver);
+            return new MovieAddPage(WebDriver);
         }
         public MovieCarouselPage deleteMovie(string movieName)
         {
             searchMovie.SendKeys(movieName);
             linkDelete.Click();
-            return new MovieCarouselPage(DriverContext.Driver);
+            return new MovieCarouselPage(WebDriver);
         }
 
 

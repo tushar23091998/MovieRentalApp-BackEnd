@@ -134,9 +134,6 @@ this.ScenarioInitialize(scenarioInfo);
 #line 12
  testRunner.When("I enter UserName and Password and click login button", ((string)(null)), table5, "When ");
 #line hidden
-#line 15
- testRunner.Then("I should see the login username with welcome", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
 #line 16
  testRunner.When("I open Movie List page and add movies", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden

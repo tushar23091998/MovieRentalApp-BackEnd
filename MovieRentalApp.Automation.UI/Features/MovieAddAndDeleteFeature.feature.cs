@@ -134,11 +134,8 @@ this.ScenarioInitialize(scenarioInfo);
 #line 12
  testRunner.When("I enter UserName and Password and click login button", ((string)(null)), table3, "When ");
 #line hidden
-#line 15
- testRunner.Then("I should see the login username with welcome", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
 #line 16
- testRunner.And("I open Edit Profile Page from dropdown button on Navbar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then("I open Edit Profile Page from dropdown button on Navbar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 17
  testRunner.When("I click admin button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

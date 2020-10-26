@@ -13,12 +13,12 @@ namespace MovieRentalApp.Automation.UI.PageObjectModels.User
         public ReadOnlyCollection<IWebElement> lnkPurchasedMovies => WebDriver.FindElements(By.ClassName("purchase-list"));
         public bool rentalMovieExists(string movieName)
         {
-            MovieHelper.ReadMovies(lnkRentalMovies);
+            MovieHelper.ReadMovies(lnkRentalMovies, WebDriver);
             return MovieHelper.ifMovieExists(movieName);
         }
         public bool purchasedMovieExists(string movieName)
         {
-            MovieHelper.ReadMovies(lnkPurchasedMovies);
+            MovieHelper.ReadMovies(lnkPurchasedMovies, WebDriver);
             return MovieHelper.ifMovieExists(movieName);
         }
     }

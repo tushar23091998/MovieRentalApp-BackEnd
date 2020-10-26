@@ -32,7 +32,7 @@ namespace MovieRentalApp.Automation.UI.PageObjectModels
         public MovieAddPage goToAdmin()
         {
             btnAdmin.Click();
-            return new MovieAddPage(DriverContext.Driver);
+            return new MovieAddPage(WebDriver);
         }
         public bool changeReflected(string name)
         {

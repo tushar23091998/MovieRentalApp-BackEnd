@@ -12,7 +12,7 @@ Scenario: Edit user details
 	When I enter UserName and Password and click login button
 	| UserName | Password |
 	| john     | password |
-	Then I should see the login username with welcome
+	#Then I should see the login username with welcome
 	When I open Edit Profile Page from dropdown button on Navbar
 	And I update the user details
 	| Name		  | Address		 | Number	  |
@@ -23,3 +23,4 @@ Scenario: Edit user details
 	| Name		  | Address		 | Number	  |
 	| John Doe	  | Beverlyhills | 9987654321 |
 	Then the name change John Doe should be reflected on the user details page
+	And I close driver

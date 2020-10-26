@@ -17,14 +17,14 @@ namespace MovieRentalApp.Automation.UI.PageObjectModels.Authentication
 
         public MovieCarouselPage Login(string username, string password)
         {
-            NavBarPage navBarPage = new NavBarPage(DriverContext.Driver);
+            NavBarPage navBarPage = new NavBarPage(WebDriver);
             navBarPage.lnkSignIn.Click();
             txtUsername.SendKeys(username);
             txtPassword.SendKeys(password);
             Thread.Sleep(1000);
             btnLogin.Click();
             Thread.Sleep(1000);
-            return new MovieCarouselPage(DriverContext.Driver);
+            return new MovieCarouselPage(WebDriver);
         }
     }
 }

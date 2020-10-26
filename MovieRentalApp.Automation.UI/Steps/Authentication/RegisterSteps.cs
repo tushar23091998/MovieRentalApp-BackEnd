@@ -1,6 +1,7 @@
 ﻿using MovieRentalApp.Automation.UI.PageObjectModels;
 using MovieRentalApp.Automation.UI.PageObjectModels.Authentication;
 using MovieRentalApp.Automation.UI.PageObjectModels.Movies;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,13 +14,16 @@ namespace MovieRentalApp.Automation.UI.Steps.Authentication
     [Scope(Feature = "Register")]
     public class RegisterSteps : BaseSteps
     {
-        private NavBarPage _navBarPage = new NavBarPage(DriverContext.Driver);
+        public RegisterSteps(FeatureContext featureContext) : base(featureContext) { }
+
+        private NavBarPage _navBarPage;
         private RegisterPage _registerPage;
         private MovieCarouselPage _movieCarouselPage;
 
         [Then(@"I click Register link")]
         public void ThenIClickRegisterLink()
         {
+            _navBarPage = new NavBarPage(webDriver);
             _registerPage = _navBarPage.openRegister();
         }
 

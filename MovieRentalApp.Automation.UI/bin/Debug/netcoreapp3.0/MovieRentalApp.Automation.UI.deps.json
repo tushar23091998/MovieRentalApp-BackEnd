@@ -18,6 +18,7 @@
           "SpecFlow.Assist.Dynamic": "1.4.2",
           "SpecFlow.Tools.MsBuild.Generation": "3.4.14",
           "SpecFlow.xUnit": "3.4.14",
+          "System.Net.Http": "4.3.4",
           "Xunit.SkippableFact": "1.4.13",
           "coverlet.collector": "1.2.0",
           "xunit": "2.4.0",

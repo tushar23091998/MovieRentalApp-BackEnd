@@ -1,6 +1,7 @@
 ﻿using MovieRentalApp.Automation.UI.PageObjectModels;
 using MovieRentalApp.Automation.UI.PageObjectModels.Authentication;
 using MovieRentalApp.Automation.UI.PageObjectModels.Movies;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,9 @@ namespace MovieRentalApp.Automation.UI.Steps.Authentication
     [Scope(Feature = "MovieAddAndDelete")]
     public  class MovieAddAndDeleteSteps : BaseSteps
     {
-        private NavBarPage _navBarPage = new NavBarPage(DriverContext.Driver);
+        public MovieAddAndDeleteSteps(FeatureContext featureContext) : base(featureContext) { }
+
+        private NavBarPage _navBarPage;
         private EditProfilePage _editProfilePage;
         private MovieCarouselPage _movieCarouselPage;
         private LoginPage _loginPage;
@@ -26,6 +29,7 @@ namespace MovieRentalApp.Automation.UI.Steps.Authentication
         [Then(@"I click Sign In link")]
         public void ThenIClickSignInLink()
         {
+            _navBarPage = new NavBarPage(webDriver);
             _loginPage = _navBarPage.openLogin();
         }
 
@@ -73,6 +77,7 @@ namespace MovieRentalApp.Automation.UI.Steps.Authentication
         {
             _moviesListPage = _navBarPage.goToMovies();
             Assert.False(_moviesListPage.movieExists("The Shawshank Redemption"));
+            //TestEnd();
         }
 
     }

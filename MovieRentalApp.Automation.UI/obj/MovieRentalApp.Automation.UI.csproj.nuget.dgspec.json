@@ -78,6 +78,10 @@
               "target": "Package",
               "version": "[3.4.14, )"
             },
+            "System.Net.Http": {
+              "target": "Package",
+              "version": "[4.3.4, )"
+            },
             "Xunit.SkippableFact": {
               "target": "Package",
               "version": "[1.4.13, )"

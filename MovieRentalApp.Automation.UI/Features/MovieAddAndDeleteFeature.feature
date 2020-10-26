@@ -12,8 +12,8 @@ Scenario: Add and Delete Movie
 	When I enter UserName and Password and click login button
 	| UserName | Password |
 	| john     | password |
-	Then I should see the login username with welcome
-	And I open Edit Profile Page from dropdown button on Navbar
+	#Then I should see the login username with welcome
+	Then I open Edit Profile Page from dropdown button on Navbar
 	When I click admin button
 	And  I add a movie
 	| MovieTitle			   | MovieDescription																																																																				 | MovieDuration | MovieRentalRate   | MoviePurchaseRate | MovieRating | MovieImageLink																	   | MovieTrailerLink					 | MovieGenre | MovieWideImageLink																																										|

@@ -14,7 +14,7 @@ namespace MovieRentalApp.Automation.UI.PageObjectModels.Helpers
         public static void ReadTable(IWebElement table, string movieName, string rentOrPurchase, IWebDriver webDriver)
         {
             IJavaScriptExecutor js = (IJavaScriptExecutor)webDriver;
-            WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(2));
+            WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(3));
 
             var columns = table.FindElements(By.TagName("th"));
             
@@ -39,7 +39,10 @@ namespace MovieRentalApp.Automation.UI.PageObjectModels.Helpers
                                 if (rentalPriceBtn.Text == "Rent")
                                 {
                                     //Thread.Sleep(2000);
-                                    wait.Until(ExpectedConditions.ElementExists(By.ClassName("rent")));
+
+                                    wait.Until(ExpectedConditions.ElementToBeClickable(By.ClassName("rent")));
+                                    //Refreshed(ExpectedConditions.stalenessOf("table")));
+                                    //wait.Until(ExpectedConditions.ElementExists(By.ClassName("rent")));
                                     js.ExecuteScript("arguments[0].click();", rentalPriceBtn);
                                     goto Finish;
                                     //rentalPriceBtn.Click();

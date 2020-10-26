@@ -12,7 +12,7 @@ Scenario: Place Order
 	When I enter UserName and Password and click login button
 	| UserName | Password |
 	| john     | password |
-	Then I should see the login username with welcome
+	#Then I should see the login username with welcome
 	When I open Movie List page and add movies
 	And I open Movie Carousel page and add movies
 	Then I open the cart

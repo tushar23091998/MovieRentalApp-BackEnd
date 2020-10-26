@@ -7,7 +7,7 @@ namespace MovieRentalApp.Automation.UI.Config
 {
     public class Browser
     {
-        private readonly IWebDriver _driver;
+        private IWebDriver _driver;
 
         public Browser(IWebDriver driver)
         {
@@ -18,7 +18,7 @@ namespace MovieRentalApp.Automation.UI.Config
 
         public void GoToUrl(string url)
         {
-            DriverContext.Driver.Url = url;
+            _driver.Url = url;
             //this.Type = BrowserType.Chrome;
         }
 

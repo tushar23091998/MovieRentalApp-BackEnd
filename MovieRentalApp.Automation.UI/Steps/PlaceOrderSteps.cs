@@ -2,6 +2,7 @@
 using MovieRentalApp.Automation.UI.PageObjectModels.Authentication;
 using MovieRentalApp.Automation.UI.PageObjectModels.Movies;
 using MovieRentalApp.Automation.UI.PageObjectModels.User;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,9 @@ namespace MovieRentalApp.Automation.UI.Steps
     [Scope(Feature = "PlaceOrder")]
     public class PlaceOrderSteps : BaseSteps
     {
-        private NavBarPage _navBarPage = new NavBarPage(DriverContext.Driver);
+        public PlaceOrderSteps(FeatureContext featureContext) : base(featureContext) { }
+
+        private NavBarPage _navBarPage;
         private MovieCarouselPage _movieCarouselPage;
         private LoginPage _loginPage;
         private MoviesListPage _moviesListPage;
@@ -26,6 +29,7 @@ namespace MovieRentalApp.Automation.UI.Steps
         [Then(@"I click Sign In link")]
         public void ThenIClickSignInLink()
         {
+            _navBarPage = new NavBarPage(webDriver);
             _loginPage = _navBarPage.openLogin();
         }
 
@@ -71,6 +75,7 @@ namespace MovieRentalApp.Automation.UI.Steps
             Assert.True(_userOrdersPage.rentalMovieExists("Big Hero 6"));
             Assert.True(_userOrdersPage.rentalMovieExists("Gandhi"));
             Assert.True(_userOrdersPage.purchasedMovieExists("Goodfellas"));
+            //TestEnd();
         }
 
 
